@@ -195,13 +195,14 @@ int main(int argc, char *argv[]) {
         goto EXIT;
     }
 
-    sp_set_baudrate(port, 115200);
     error = sp_open(port, SP_MODE_READ);
     if (SP_OK != error) {
         printf("Error opening serial device\n");
         ret = -2;
         goto EXIT;
     }
+
+    sp_set_baudrate(port, 115200);
 
     // Check communication
     strcpy(AT_command, "AT");
